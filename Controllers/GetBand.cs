@@ -24,4 +24,18 @@ public class Band : ControllerBase
 
         return Ok(band);
     }
+
+    [HttpGet("{name}")]
+    public IActionResult GetByName(string name)
+    {
+        var band = DummyData.ExampleDatabase.BandList.Find(b => b.Name == name);
+
+        if (band == null) 
+        { 
+            return NotFound();
+        }
+
+        return Ok(band);
+    }
+
 }
