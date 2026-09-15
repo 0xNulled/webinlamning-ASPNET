@@ -11,4 +11,17 @@ public class Band : ControllerBase
     {
         return Ok(DummyData.ExampleDatabase.BandList);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
+    {
+        var band = DummyData.ExampleDatabase.BandList.FirstOrDefault(b => b.Id == id);
+
+        if (band == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(band);
+    }
 }
