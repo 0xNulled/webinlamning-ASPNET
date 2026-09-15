@@ -12,7 +12,7 @@ public class Band : ControllerBase
         return Ok(DummyData.ExampleDatabase.BandList);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("id/{id}")]
     public IActionResult GetById(int id)
     {
         var band = DummyData.ExampleDatabase.BandList.FirstOrDefault(b => b.Id == id);
@@ -25,7 +25,7 @@ public class Band : ControllerBase
         return Ok(band);
     }
 
-    [HttpGet("{name}")]
+    [HttpGet("name/{name}")]
     public IActionResult GetByName(string name)
     {
         var band = DummyData.ExampleDatabase.BandList.Find(b => b.Name == name);
