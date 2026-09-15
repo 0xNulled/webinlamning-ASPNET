@@ -10,6 +10,5 @@ public class Album
     public string Title { get; set; } = string.Empty;
     [Required]
     public int ReleaseYear { get; set; }
-
-    public List<Tracks> TrackList { get; set;}
+    public List<Track> TrackList { get; set;}
 }

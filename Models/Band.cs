@@ -12,7 +12,6 @@ public class Band
     public string Genre { get; set; } = string.Empty;
     [Required]
     public bool Status { get; set; }
-
     public List<Album> Albums { get; set; }
 
 };
