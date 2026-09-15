@@ -13,6 +13,6 @@ public class Band
     [Required]
     public bool Status { get; set; }
 
-    // public list<album> Albums { get; set; }
+    public List<Album> Albums { get; set; }
 
 };
