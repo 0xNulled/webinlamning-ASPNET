@@ -1,10 +1,11 @@
 namespace Metallix.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Metallix;
+using Metallix.Models;
 
 [ApiController]
-[Route("api/[Controller]")]
-public class Band : ControllerBase
+[Route("api/band/[Controller]")]
+public class BandController : ControllerBase
 {
     [HttpGet]
     public IActionResult GetAll()
@@ -36,6 +37,21 @@ public class Band : ControllerBase
         }
 
         return Ok(band);
+    }
+
+    [HttpPut("updatebyid/{id}")]
+    public IActionResult UpdateById(int id, Band updated_band)
+    {
+        var band = DummyData.ExampleDatabase.BandList.FirstOrDefault(b => b.Id == id);
+
+        if (band == null)
+        {
+            return NotFound();
+        }
+
+        band = updated_band;
+
+        return NoContent();
     }
 
 }
