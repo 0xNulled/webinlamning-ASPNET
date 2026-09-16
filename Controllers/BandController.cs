@@ -54,4 +54,26 @@ public class BandController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost("create")]
+    public IActionResult CreateBand(Band band)
+    {
+        if (band == null)
+        {
+            return NotFound();
+        }
+
+        int appendId = DummyData.ExampleDatabase.BandList.Count();
+
+        try 
+        {
+            band.Id = appendId + 1;
+            DummyData.ExampleDatabase.BandList.Append(band);
+        } 
+        catch (Exception err)
+        {
+            return BadRequest(err);
+        }
+
+        return Ok(band); //Debugg. När funktionalitet är mer säkerställd behöver vi inte returna bandet 
+    }
 }
