@@ -1,0 +1,49 @@
+Förväntingar
+- Responsiv app (ska fungera på dator + (telefon|mobil))
+- Kopplad backend och frontend 
+- REST API (inte nödvändigtvis delete)
+- Lättare filhantering (bilder) (behöver inte vara helt färdig inför React Native)
+- 
+
+
+const API_URL = "url"
+avsluta useEffect() (speciellt med laddningsbar) med .finally() så att laddningsbaren försvinner även om saker går fel
+
+som sista steg, försök att ta bort så mycket kod som möjligt. Ta bort kommentarer som inte behövs
+
+async function addTask(text) {
+    try {
+        const res = await fetch(API_URL, {
+            method: "Post",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({text, done:false})
+        });
+
+        if (!res.ok) {
+            throw new error("Kunde inte lägga till uppgiften");
+
+            const newTask = await res.json();
+            setTask([...tasks, newTask]);
+        }
+    }
+}
+
+Saker att fixa. 
+- Controllers/BandController.cs rad 7, api route är just nu /api/band/band
+
+Testa insomnia/postman 
+- Insomnia, kan generera client code för api request i olika språk. 
+
+API url Struktur
+/api/model/input
+
+Struktur
+Controllers/
+- BandController.cs //Ha alla API endpoints för band. Extrahera som sista steg. 
+- AlbumController.cs //Samma som BandController men för AlbumController.
+
+
+Error handeling
+Controllers/BandController.cs:65 CreateBand
+- Lägg till error handeling ifall id retureras till 0 
+
