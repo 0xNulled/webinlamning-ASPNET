@@ -4,7 +4,7 @@ using Metallix;
 using Metallix.Models;
 
 [ApiController]
-[Route("api/band/[Controller]")]
+[Route("api/[Controller]")]
 public class BandController : ControllerBase
 {
     [HttpGet]
