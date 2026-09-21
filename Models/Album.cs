@@ -7,10 +7,9 @@ public class Album
     [Required]
     public int Id { get; set; }
     [Required(ErrorMessage = "Album must have a title")]
-    public string Title { get; set; } = string.Empty;
+    public string AlbumName { get; set; } = string.Empty;
     [Required]
-    public int ReleaseYear { get; set; }
+    public string Artist { get; set; } = "N/A";
 
-    public bool ListenedThrough { get; set; } = false;
-    public List<Track> TrackList { get; set;} = new List<Track>();
+    public bool ListeningStatus { get; set; } = false;
 }
