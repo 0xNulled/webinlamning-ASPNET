@@ -4,12 +4,12 @@ namespace Metallix.Models;
 
 public class Album
 {
-    [Required]
-    public int Id { get; set; }
-    [Required(ErrorMessage = "Album must have a title")]
-    public string AlbumName { get; set; } = string.Empty;
-    [Required]
-    public string Artist { get; set; } = "N/A";
+    
+    public int id { get; set; }
+   
+    public string albumName { get; set; } = string.Empty;
+    
+    public string artist { get; set; } = string.Empty;
 
-    public bool ListeningStatus { get; set; } = false;
+    public bool listeningStatus { get; set; } = false;
 }

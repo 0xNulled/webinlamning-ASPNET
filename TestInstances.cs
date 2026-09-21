@@ -11,9 +11,9 @@ public class Initialization{
 
     public List<Album> AlbumList = new()
     {
-        new Album { Id = 1, AlbumName = "III", Artist = "Portrait Decay", ListeningStatus = true },
-        new Album { Id = 2, AlbumName = "Wretched Lives", Artist = "Demonic Science", ListeningStatus = false },
-        new Album { Id = 3, AlbumName = "Hivemind Narcosis", Artist = "Thantifaxath", ListeningStatus = false }
+        new Album { id = 1, albumName = "III", artist = "Portrait Decay", listeningStatus = true },
+        new Album { id = 2, albumName = "Wretched Lives", artist = "Demonic Science", listeningStatus = false },
+        new Album { id = 3, albumName = "Hivemind Narcosis", artist = "Thantifaxath", listeningStatus = false }
     };
 }
 
