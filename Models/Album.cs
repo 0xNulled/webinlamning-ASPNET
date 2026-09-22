@@ -12,4 +12,6 @@ public class Album
     public string artist { get; set; } = string.Empty;
 
     public bool listeningStatus { get; set; } = false;
+
+    public string? imageURL { get; set; }
 }

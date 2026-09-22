@@ -4,6 +4,12 @@ using Metallix;
 using Metallix.Models;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using System.Reflection.Metadata.Ecma335;
+using System.Reflection;
+
+using System;
+using System.Drawing;
+using System.IO;
+using Microsoft.AspNetCore.Mvc; 
 
 [ApiController]
 [Route("api/[Controller]")]
@@ -32,14 +38,25 @@ public class AlbumController : ControllerBase
         return Ok();
     }
 
-    /*[HttpGet("id/{id}")]
-    public IActionResult GetById(int id)
+    [HttpPost("{id}/image")]
+    public async Task<IActionResult> UploadNewImage(int id, IFormFile file) 
     {
-        var album = DummyData.ExampleDatabase.AlbumList.FirstOrDefault();
+        if (file.Length == 0) return BadRequest("ingen bild vald");
 
+        var album = DummyData.ExampleDatabase.AlbumList.FirstOrDefault((album) => album.id == id );
 
-    };*/
+        if (album == null) return NotFound();
 
-    //[HttpPut("updatebyid/{id}")]
-    //public IActionResult UpdateById(int id, Album updatedAlbum)
+        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+        var filePath = Path.Combine("wwwroot/uploads", fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        album.imageURL = $"/uploads/{fileName}";
+
+        return Ok(album.imageURL);
+    }
 }
