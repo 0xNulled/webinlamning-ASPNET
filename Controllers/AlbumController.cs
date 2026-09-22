@@ -1,15 +1,10 @@
 namespace Metallix.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Metallix;
-using Metallix.Models;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
-using System.Reflection.Metadata.Ecma335;
-using System.Reflection;
 
 using System;
-using System.Drawing;
 using System.IO;
-using Microsoft.AspNetCore.Mvc; 
+using Metallix.Models;
 
 [ApiController]
 [Route("api/[Controller]")]
@@ -22,18 +17,13 @@ public class AlbumController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult UpdateListeningStatus(int id, Album test )
+    public IActionResult UpdateListeningStatus(int id)
     {
-        Console.WriteLine(id);
-        Console.WriteLine(test);
         var album = DummyData.ExampleDatabase.AlbumList.FirstOrDefault((band) => band.id == id);
 
-        //if (album == null) return NotFound();
+        if (album == null) return NotFound();
 
         album.listeningStatus = !album.listeningStatus;
-        //album.ListeningStatus = listeningStatus;
-        //Console.WriteLine(id);
-        //Console.WriteLine(listeningStatus);
 
         return Ok();
     }
@@ -58,5 +48,15 @@ public class AlbumController : ControllerBase
         album.imageURL = $"/uploads/{fileName}";
 
         return Ok(album.imageURL);
+    }
+
+    [HttpPost("addAlbum")]
+    public IActionResult createNewAlbum(Album newAlbum)
+    {
+        newAlbum.id = DummyData.ExampleDatabase.AlbumList.Count() + 1;
+
+        DummyData.ExampleDatabase.AlbumList.Add(newAlbum);
+
+        return Created();
     }
 }
