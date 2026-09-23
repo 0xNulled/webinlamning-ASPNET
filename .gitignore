@@ -4,3 +4,7 @@ obj/*
 *.http
 wwwroot/uploads/*
 !.gitkeep
+
+!PortraitDecay-III.png
+!DemonicScience-WretchedLives.png
+!Thantifaxath-HiveMindNarcosis.png

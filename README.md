@@ -6,6 +6,7 @@ https://dotnet.microsoft.com/en-us/download/dotnet/10.0
 2. Klona detta repo och hoppa in i projektets mapp
 ```bash
 git clone https://github.com/0xNulled/webinlamning-ASPNET
+cd webinlamning-ASPNET
 ```
 
 3. Starta servern
