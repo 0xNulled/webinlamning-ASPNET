@@ -24,6 +24,7 @@ if (app.Environment.IsDevelopment())
 }*/
 
 app.UseCors();
+app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();

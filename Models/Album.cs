@@ -4,11 +4,14 @@ namespace Metallix.Models;
 
 public class Album
 {
-    [Required]
-    public int Id { get; set; }
-    [Required(ErrorMessage = "Album must have a title")]
-    public string Title { get; set; } = string.Empty;
-    [Required]
-    public int ReleaseYear { get; set; }
-    public List<Track> TrackList { get; set;} = new List<Track>();
+    
+    public int id { get; set; }
+   
+    public string albumName { get; set; } = string.Empty;
+    
+    public string artist { get; set; } = string.Empty;
+
+    public bool listeningStatus { get; set; } = false;
+
+    public string? imageURL { get; set; }
 }
